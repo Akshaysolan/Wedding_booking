@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<script>
+	function showLoginForm() {
+		document.getElementById("loginForm").style.display = "block";
+	}
+
+	function validateLogin(event) {
+		event.preventDefault();
+
+		let username = document.getElementById("username").value;
+		let password = document.getElementById("password").value;
+
+		if (username === "admin" && password === "1234") {
+			window.location.href = "/visitors";
+		} else {
+			document.getElementById("errorMsg").innerText = "Invalid Username or Password!";
+		}
+	}
+</script>
+<style>
+body {
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	background-color: #e0f7fa;
+	padding: 40px;
+	margin: 0;
+}
+
+.container {
+	background: white;
+	padding: 30px;
+	border-radius: 12px;
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+	display: inline-block;
+	width: 300px;
+}
+
+h2, h3 {
+	color: #00796b;
+}
+
+button {
+	background: #00897b;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+button:hover {
+	background: #00695c;
+}
+
+#loginForm {
+	display: none;
+	margin-top: 20px;
+}
+
+input {
+	width: calc(100% - 16px);
+	padding: 10px;
+	margin: 10px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+#errorMsg {
+	color: red;
+	margin-top: 10px;
+	font-weight: bold;
+}
+</style>
+</head>
+<body>
+
+	<div class="container">
+		<h2>Home</h2>
+		<button onclick="showLoginForm()">Show Visitor Data</button>
+
+		<div id="loginForm">
+			<h3>Login</h3>
+			<form onsubmit="validateLogin(event)">
+				<input type="text" id="username" placeholder="Enter Username"
+					required><br> <input type="password" id="password"
+					placeholder="Enter Password" required><br>
+				<button type="submit">Login</button>
+			</form>
+			<p id="errorMsg"></p>
+		</div>
+	</div>
+
+</body>
+</html>
